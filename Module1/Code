@@ -1,0 +1,41 @@
+// code
+//
+; 
+void setup()
+{
+  
+  //Used for Red led to signal motion detection 
+  pinMode(12, OUTPUT);
+  
+  //Setting the interrupt pin on arduino; connected to PIR sensor
+  pinMode(2,INPUT);
+  
+  //Used for Green led to signal no motion detection
+  pinMode(13, OUTPUT);
+
+  attachInterrupt(digitalPinToInterrupt(2), Motion_sensed, CHANGE);
+                  
+}
+
+void loop()
+{
+  delay(100);
+}
+
+//Turning LEDs ON/OFF based on the motion detection
+
+void Motion_sensed()
+{
+  
+  if(digitalRead(2) == HIGH)
+  {
+    digitalWrite(12,HIGH);
+    digitalWrite(13,LOW);
+  }
+  else
+  {
+    digitalWrite(13,HIGH);
+	digitalWrite(12,LOW);
+  }
+   
+}
