@@ -1,8 +1,7 @@
-// code
-//
 
 void setup()
 {
+  Serial.begin(9600);
   
   //Used for Red led to signal motion detection 
   pinMode(12, OUTPUT);
@@ -29,11 +28,13 @@ void Motion_sensed()
   
   if(digitalRead(2) == HIGH)
   {
+    Serial.print("The Motion is detected\n");
     digitalWrite(12,HIGH);
     digitalWrite(13,LOW);
   }
   else
   {
+    Serial.print("The Motion is not detected\n");
     digitalWrite(13,HIGH);
 	digitalWrite(12,LOW);
   }
